@@ -1,0 +1,55 @@
+---
+title: "King_Week7"
+author: "Matthew King"
+date: "2024-07-17"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+At an international conference you meet a French colleague also interested in penguin research. They’re very excited after your recent string of findings (and beautiful graphs) and want to plan a visit to the states to visit several researchers in your field. However, they intuitively think in Celsius (C) and would love your help with an R script that converts Fahrenheit (F) to their preferred temperature units
+
+1A. Create an object containing the number 35. Using that object, convert it to Celsius and print that converted value. The conversion formula is as follows: C = (F - 32) x 5/9
+```{r}
+p <- 35
+(p - 32) * 5/9
+```
+
+1B. Your colleague is very appreciative of your quick calculation but realizes it might be easier to convert a set of temperatures from C to F so that they can keep that range in mind. Write a for loop that converts 35, 45, 55, 65, 75, 85, and 95°F into their equivalents in C and prints the result.
+```{r}
+numbers <- c(35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95)
+for(p in numbers){
+  cel_to_fahr <- (p - 32) * 5/9
+  print(cel_to_fahr)
+}
+```
+
+1C. You’re happy with this loop but you don’t think the raw temperatures are going to be very useful to your colleague’s planning. Add a conditional to the loop where if the temperature in Celsius is less than or equal to 18 a message is printed that includes (1) the temp in Fahrenheit and (2) a note to your colleague that they should plan on packing a jacket. If the temperature is greater than 18°C, the message should still include the temp in F and can tell them not to worry about bringing a jacket
+```{r}
+for(p in numbers){
+  cel_to_fahr <- (p - 32) * 5/9
+  if(cel_to_fahr<18){
+    print(paste("The temperature is", p, "so you should bring a jacket."))}
+    else {
+    print(paste("The temperature is", p, "so you do not need a jacket."))
+    }
+  }
+```
+
+1D. Whether or not to bring a jacket is a rather coarse assessment of temperature though! Add more conditionals such that (A) if temperature is less than 18°C the message includes the note about bringing a jacket, (B) if temperature is greater than or equal to 23°C the message is that they should pack shorts, or (C) if temperature is between 18 and 23°C that neither shorts nor a jacket is required. All three message options should also include the temperature in Fahrenheit for that iteration of the loop (same as question 1c)
+```{r}
+for(p in numbers){
+  cel_to_fahr <- (p - 32) * 5/9
+  if(cel_to_fahr<18) {
+    print(paste("The temperature is", p, "so you should bring a jacket."))}
+    else if(cel_to_fahr>18 & cel_to_fahr<23) {
+    print(paste("The temperature is", p, "so you do not need shorts or a jacket"))
+    }
+    else {
+    print(paste("The temperature is", p, "so you should pack shorts"))
+    }
+    }
+
+```
